@@ -1,0 +1,1 @@
+export const BackendURl="https://fooddeliverybackend-7-ucuq.onrender.com/"
