@@ -1,1 +1,1 @@
-export const BackendURl="https://fooddeliverybackend-7-ucuq.onrender.com/"
+export const BackendURl="https://fooddeliverybackend-10.onrender.com//"
