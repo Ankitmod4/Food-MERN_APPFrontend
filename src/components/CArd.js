@@ -36,18 +36,15 @@ const Card = () => {
     const selectedPrice = item.options[0][size];  
     const itemToAdd = { ...item, price: selectedPrice, size, quantity };
 
-    console.log("Item to add:", itemToAdd); 
-    console.log("Current cart:", cart); 
-
     const isItemInCart = cart.some(cartItem => 
       cartItem.name === itemToAdd.name && cartItem.size === size
     );
 
     if (!isItemInCart) {
       dispatch(AddCart(itemToAdd));
+      alert('Item added to cart!');
     } else {
-      // alert('Item is already in the cart.');
-      dispatch(AddCart(itemToAdd));
+      alert('Item is already in the cart.');
     }
   };
 
@@ -65,30 +62,33 @@ const Card = () => {
     }));
   };
 
-  return (
+  return ( 
     <div className='p-3'>
-      <div className='d-flex justify-content-around col-lg-12'>
-        {['Biryani/Rice', 'Starter', 'Pizza', 'All'].map(category => (
-          <button
-            key={category}
-            className='p-12 w-50'
-            style={{ height: '70px', color: 'black', backgroundColor: 'grey' }}
-            onClick={() => handleCategoryClick(category)}
-          >
-            {category}
-          </button>
-        ))}
+      <div className="container">
+        <div className="row">
+          {['Biryani/Rice', 'Starter', 'Pizza', 'All'].map(category => (
+            <div className="col-md-6 col-sm-6 col-lg-3 col-6 " key={category}>
+              <button
+                className="btn w-100 p-3 mx-3 mb-3  "
+                style={{ backgroundColor: 'grey' }}
+                onClick={() => handleCategoryClick(category)}
+              >
+                {category}
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className='container'>
-        <div className="row">
+        <div className="row justify-content-center">
           {filteredItems.map((item, index) => {
             const selectedSize = selectedSizes[index] || Object.keys(item.options[0])[0];
             const quantity = quantities[index] || 1;
 
             return (
-              <div className='col-lg-3 col-sm-12 col-md-6 mt-4 d-flex' key={index}>
-                <div className='border border-primary border-1 rounded'>
+              <div className='col-lg-3 col-sm-12 col-md-6 mt-4 d-flex justify-content-center' key={index}>
+                <div className='border border-primary border-1 rounded p-2 text-center'>
                   <img src={item.img} width={240} height={200} alt={item.name} />
                   <h3>{item.name}</h3>
                   <div className='d-flex justify-content-around'>
@@ -101,9 +101,9 @@ const Card = () => {
                     </select>
                   </div>
 
-                  <div className='justify-content-center d-flex'>
+                  <div className='d-flex justify-content-center mt-2'>
                     <button
-                      className='bg-success'
+                      className='bg-success text-white p-2 btn btn-primary' 
                       onClick={() => handleAddToCart(item, selectedSize, quantity)}
                     >
                       Add To Cart
@@ -118,5 +118,5 @@ const Card = () => {
     </div>
   );
 };
- 
+
 export default Card;

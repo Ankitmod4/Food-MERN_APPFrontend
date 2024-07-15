@@ -40,12 +40,13 @@ const MyOrders = () => {
       localStorage.setItem(email, JSON.stringify(orderData));
 
       const res = await axios.post(`${BackendURl}/api/v1/ordercart`, {
-        email,
+        email, 
         order_data: orderData,
       });
 
       dispatch(ClearCart());
       console.log("Order successfully posted:", res.data);
+      alert("Congratulations Your Order is Placed");
     } catch (error) {
       console.error("Error while posting order:", error);
       alert("Failed to place order. Please try again later.");
