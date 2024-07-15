@@ -88,8 +88,8 @@ const Card = () => {
             const quantity = quantities[index] || 1;
 
             return (
-              <div className='col-lg-3 col-sm-12 col-md-6 mt-4 d-flex justify-content-center' key={index}>
-                <div className='border border-primary border-1 rounded p-2 text-center'>
+              <div className='col-lg-3 col-sm-12 col-md-6 mt-4 d-flex justify-content-center ' key={index}>
+                <div className='border border-black border-3 rounded p-2 text-center'>
                   <img src={item.img} width={240} height={200} alt={item.name} />
                   <h3>{item.name}</h3>
                   <div className='d-flex justify-content-around'>

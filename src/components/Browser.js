@@ -10,13 +10,13 @@ const Browser = () => {
           
             </div>
           <div className="carousel-item active">
-            <img src="https://th.bing.com/th?id=OIP.n-x0aGScXztEGuUuN356nQHaE8&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" className="d-block w-100" style={{filter:'brightness(80%)'}} alt="..." />
+            <img src="https://th.bing.com/th?id=OIP.n-x0aGScXztEGuUuN356nQHaE8&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" className="d-block w-100" style={{filter:'brightness(80%)',height:'400px'}} alt="..." />
           </div>
           <div className="carousel-item">
-            <img src="https://th.bing.com/th?id=OIP.z_ilCv9sIs4AnOpF_9GB5AHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" className="d-block w-100" alt="..." style={{filter:'brightness(80%)'}} />
+            <img src="https://th.bing.com/th?id=OIP.z_ilCv9sIs4AnOpF_9GB5AHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" className="d-block w-100" alt="..." style={{filter:'brightness(80%)',height:'400px'}} />
           </div>
           <div className="carousel-item">
-            <img src="https://th.bing.com/th?id=OIP.Uv-B4VMzBpTL88nY12x98gHaE8&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" className="d-block w-100" style={{filter:'brightness(80%)'}} alt="..." />
+            <img src="https://th.bing.com/th?id=OIP.Uv-B4VMzBpTL88nY12x98gHaE8&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" className="d-block w-100" style={{filter:'brightness(80%)',height:'400px'}} alt="..." />
           </div>
         </div>
         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
