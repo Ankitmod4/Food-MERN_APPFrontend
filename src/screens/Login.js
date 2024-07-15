@@ -25,7 +25,7 @@ const Login = () => {
         // console.log(res.accessToken);
         localStorage.setItem("email", email);
         console.log(email);
-        
+        alert("Login Successfully");
         
         navigate('/');
       }
