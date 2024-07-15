@@ -1,1 +1,1 @@
-export const BackendURl = "https://fooddeliverybackend-12.onrender.com";
+export const BackendURl = "https://food-app-backend-peach.vercel.app";
