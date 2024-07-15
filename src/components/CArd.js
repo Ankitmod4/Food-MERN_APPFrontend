@@ -44,6 +44,7 @@ const Card = () => {
       dispatch(AddCart(itemToAdd));
       alert('Item added to cart!');
     } else {
+      dispatch(AddCart(itemToAdd));
       alert('Item is already in the cart.');
     }
   };
