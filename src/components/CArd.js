@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import data from '../JSON/foodData2.json';
 import { useSelector, useDispatch } from 'react-redux'; 
 import { AddCart } from '../Redux/Slices/Slice';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const Card = () => {
   const [items, setItems] = useState(data);
   const [filteredItems, setFilteredItems] = useState(data);
@@ -10,6 +11,15 @@ const Card = () => {
   const [quantities, setQuantities] = useState({});
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
+
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
+  useEffect(() => {
+    AOS.refresh(); 
+  });
 
   const handleCategoryClick = (category) => {
     if (category === 'All') {
@@ -68,7 +78,7 @@ const Card = () => {
       <div className="container">
         <div className="row">
           {['Biryani/Rice', 'Starter', 'Pizza', 'All'].map(category => (
-            <div className="col-md-6 col-sm-6 col-lg-3 col-6 " key={category}>
+            <div className="col-md-6 col-sm-6 col-lg-3 col-6 d-flex"  key={category}>
               <button
                 className="btn w-100 p-3 mx-3 mb-3  "
                 style={{ backgroundColor: 'grey' }}
@@ -88,16 +98,16 @@ const Card = () => {
             const quantity = quantities[index] || 1;
 
             return (
-              <div className='col-lg-3 col-sm-12 col-md-6 mt-4 d-flex justify-content-center ' key={index}>
-                <div className='border border-black border-3 rounded p-2 text-center'>
+              <div className='col-lg-3 col-sm-12 col-md-6 mt-4 d-flex justify-content-center ' key={index} data-aos='fade-up' >
+                <div className='border border-black border-3 rounded p-2 text-center'  >
                   <img src={item.img} width={240} height={200} alt={item.name} />
                   <h3>{item.name}</h3>
                   <div className='d-flex justify-content-around'>
-                    <select value={selectedSize} onChange={(e) => handleSizeChange(index, e.target.value)}>
+                    <select value={selectedSize} onChange={(e) => handleSizeChange(index, e.target.value)} className='border border-primary border-3 rounded'>
                       {getSelectOptions(item.options)}
                     </select>
 
-                    <select value={quantity} className='w-20 h-250' onChange={(e) => handleQuantityChange(index, parseInt(e.target.value))}>
+                    <select  className='border border-primary border-3 rounded w-20 h-250' value={quantity}  onChange={(e) => handleQuantityChange(index, parseInt(e.target.value))} >
                       {generateOptions()}
                     </select>
                   </div>
