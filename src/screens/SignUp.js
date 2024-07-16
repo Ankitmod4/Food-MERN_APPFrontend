@@ -51,14 +51,14 @@ const SignUp = () => {
   </div>
   <div className="mb-3">
     <label for="exampleInputEmail1" className="form-label">Email address</label>
-    <input type="email" className="form-control" value={email}  onChange={(e) => 
+    <input type="email" className="form-control" value={email}   onChange={(e) => 
               setemail(e.target.value)
     }/> 
    
   </div>
   <div className="mb-3">
     <label for="exampleInputPassword1" className="form-label">Password</label>
-    <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e) => 
+    <input type="password" className="form-control" id="exampleInputPassword1" value={password} maxLength={12} minLength={8} onChange={(e) => 
               setpassword(e.target.value)
     }/>
   </div>
