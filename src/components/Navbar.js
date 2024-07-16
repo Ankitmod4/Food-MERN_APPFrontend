@@ -44,7 +44,8 @@ const Navbar = () => {
             {localStorage.getItem("authToken") ? (
               <li className="nav-item">
                 <Link className="btn bg-white mx-3" to="/myorders" onClick={closeNavbar}>My Orders</Link>
-       
+                <Link className="btn bg-white mx-3" to="/previousorders" >Previous Orders</Link>
+                
               </li>
             ) : " "}
           </ul>

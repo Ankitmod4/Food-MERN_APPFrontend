@@ -9,6 +9,7 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import SignUp from './screens/SignUp';
 import Myorders from './screens/Myorders'; 
+import PreviousOrders from './components/PreviousOrders';
 
 
 
@@ -24,7 +25,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/createuser" element={<SignUp />} />
         <Route path="/myorders" element={<Myorders />} />
-       
+       <Route path='/previousorders' element={<PreviousOrders />}/>
         </Routes>
       </Router>
     
