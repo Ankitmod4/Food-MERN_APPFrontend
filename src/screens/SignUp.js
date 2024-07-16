@@ -48,7 +48,7 @@ const SignUp = () => {
     <label for="exampleInputEmail1" className="form-label">Name</label>
             <input type="text" className="form-control" value={name} onChange={(e) => 
               setname(e.target.value)
-    } /> 
+    } maxLength={15} minLength={3} /> 
      
   </div>
   <div className="mb-3">
