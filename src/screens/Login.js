@@ -50,7 +50,7 @@ const Login = () => {
     <label for="Password" className='mb-3'>Password</label>
             <input type="password" className="form-control" id="exampleInputPassword1" value={password} placeholder="Password" onChange={(e) => {
               setpassword(e.target.value)
-    }}/>
+            }} minLength={8} maxLength={12} />
   </div>  
  
           <button type="submit mb-3" className="btn btn-primary">Submit</button>
