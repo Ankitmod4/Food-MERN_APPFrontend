@@ -20,7 +20,9 @@ const SignUp = () => {
       setname ('');
       setemail ('');
       setpassword('');
+      alert('Wait for 5 seconds');
       if (res.data.success) {
+
         alert("Profile Created Successfully");
         navigate('/login')
       }
