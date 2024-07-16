@@ -41,23 +41,32 @@ const Card = () => {
       </option>
     ));
   };
-
+ 
   const handleAddToCart = (item, size, quantity) => {
+    // Check if token is present
+    const email = localStorage.getItem('email'); 
+    if (!email) {
+      alert('You need to be logged in to add items to the cart.');
+      
+      return;
+    } 
+   
     const selectedPrice = item.options[0][size];  
     const itemToAdd = { ...item, price: selectedPrice, size, quantity };
-
+   
     const isItemInCart = cart.some(cartItem => 
       cartItem.name === itemToAdd.name && cartItem.size === size
     );
-
+  
     if (!isItemInCart) {
       dispatch(AddCart(itemToAdd));
       alert('Item added to cart!');
     } else {
       dispatch(AddCart(itemToAdd));
-      alert('Item is already in the cart So adding the quantity of that item');
+      alert('Item is already in the cart. Adding the quantity of that item.');
     }
   };
+  
 
   const handleSizeChange = (index, size) => {
     setSelectedSizes(prevSizes => ({
