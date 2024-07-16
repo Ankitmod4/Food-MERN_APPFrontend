@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { BackendURl } from '../Helper/Helper';
 import axios from 'axios';
@@ -7,9 +7,13 @@ import { Link } from 'react-router-dom';
 const Login = () => {
   const navigate = useNavigate();
   const [ email, setemail ]= useState('');
-  const [ password, setpassword ] = useState('');
+  const [password, setpassword] = useState('');
+  const [error, setError] = useState('');
+
   async function handleclick(e) {
+
     e.preventDefault();
+    setError('');
     try {
       const  res =await  axios.post(`${BackendURl}/api/v1/logindata`, {
         email,password
@@ -17,11 +21,15 @@ const Login = () => {
      
       setemail('');
       setpassword('');
-      
+       
       if (!res.data.success) {
-        alert("Enter Valid Credentials");
+        if (res.data.error) {
+          setError(res.data.error);
+        } else {
+         setError("Enter Valid Credentials");
+        }
       } else { 
-        localStorage.setItem("authToken", res.authToken);
+        localStorage.setItem("authToken", res.data.authToken);
         // console.log(res.accessToken);
         localStorage.setItem("email", email);
         console.log(email);
@@ -32,11 +40,14 @@ const Login = () => {
     }
     catch (err) {
       console.error('Error submitting form:', err);
+      setError('An error occurred  Email and Password are incorrect');
+
     }
   }
   return (
     <div>
-      
+       {error && <div className="alert alert-danger" role="alert">{error}</div>}
+      {/* {loading && <div className="loader">Loading...</div>} */}
       <form className='m-3 ' onSubmit={handleclick}>
       <div className='container'>
   <div  className="form-group mb-3 ">
