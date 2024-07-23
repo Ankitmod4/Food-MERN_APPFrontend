@@ -3,7 +3,10 @@ import data from '../JSON/foodData2.json';
 import { useSelector, useDispatch } from 'react-redux'; 
 import { AddCart } from '../Redux/Slices/Slice';
 import AOS from 'aos';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import 'aos/dist/aos.css';
+import { Toast } from 'bootstrap';
 const Card = () => {
   const [items, setItems] = useState(data);
   const [filteredItems, setFilteredItems] = useState(data);
@@ -46,7 +49,7 @@ const Card = () => {
     // Check if token is present
     const email = localStorage.getItem('email'); 
     if (!email) {
-      alert('You need to be logged in to add items to the cart.');
+      toast.error('You need to be logged in to add items to the cart.');
       
       return;
     } 
@@ -60,10 +63,10 @@ const Card = () => {
   
     if (!isItemInCart) {
       dispatch(AddCart(itemToAdd));
-      alert('Item added to cart!');
+      toast.success('Item added to cart!');
     } else {
       dispatch(AddCart(itemToAdd));
-      alert('Item is already in the cart. Adding the quantity of that item.');
+      toast.success('Item is already in the cart. Adding the quantity of that item.');
     }
   };
   
@@ -84,6 +87,7 @@ const Card = () => {
 
   return ( 
     <div className='p-3'>
+      <ToastContainer />
       <div className="container">
         <div className="row">
           {['Biryani/Rice', 'Starter', 'Pizza', 'All'].map(category => (
