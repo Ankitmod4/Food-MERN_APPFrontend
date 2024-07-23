@@ -23,9 +23,12 @@ const SignUp = () => {
       setpassword('');
     
       if (res.data.success) {
-
+ 
         toast.success("Profile Created Successfully");
-        navigate('/login')
+        setTimeout(()=>{
+          navigate('/login')
+
+        },2000)
       }
       else {
         toast.error('not created');

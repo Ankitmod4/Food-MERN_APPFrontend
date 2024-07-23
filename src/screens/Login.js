@@ -37,8 +37,10 @@ const Login = () => {
         localStorage.setItem("email", email);
         console.log(email);
         toast.success("LOGIN SUCESSFULLY");
-        
-        navigate('/');
+        setTimeout(() => {
+          navigate('/');
+
+        },2000)
       }
     }
     catch (err) { 
