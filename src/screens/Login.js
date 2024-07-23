@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { BackendURl } from '../Helper/Helper';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Login = () => {
   const navigate = useNavigate();
   const [ email, setemail ]= useState('');
@@ -26,28 +29,28 @@ const Login = () => {
         if (res.data.error) {
           setError(res.data.error);
         } else {
-         setError("Enter Valid Credentials");
+          setError("Enter Valid Credentials");
+          toast.error("ENTER VALID CREDENTIALS");
         }
       } else { 
         localStorage.setItem("authToken", res.data.authToken);
-        // console.log(res.accessToken);
         localStorage.setItem("email", email);
         console.log(email);
-        alert("Login Successfully");
+        toast.success("LOGIN SUCESSFULLY");
         
         navigate('/');
       }
     }
-    catch (err) {
+    catch (err) { 
       console.error('Error submitting form:', err);
       setError('An error occurred  Email and Password are incorrect');
-
+      toast.error("ERROR IN LOGGED IN");
     }
   }
   return (
     <div>
-       {error && <div className="alert alert-danger" role="alert">{error}</div>}
-      {/* {loading && <div className="loader">Loading...</div>} */}
+      {error && <div className="alert alert-danger" role="alert">{error}</div>}
+      <ToastContainer />
       <form className='m-3 ' onSubmit={handleclick}>
       <div className='container'>
   <div  className="form-group mb-3 ">

@@ -2,7 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { BackendURl } from '../Helper/Helper';
 
 const SignUp = () => {
@@ -20,20 +21,20 @@ const SignUp = () => {
       setname ('');
       setemail ('');
       setpassword('');
-      alert('Wait for 5 seconds');
+    
       if (res.data.success) {
 
-        alert("Profile Created Successfully");
+        toast.success("Profile Created Successfully");
         navigate('/login')
       }
       else {
-        alert('not created');
+        toast.error('not created');
       }
       
     }
     catch (err) { 
       
-      console.error('Error submitting form:', err);
+      toast.error('Error submitting form:', err);
     }
     
   }
@@ -41,7 +42,8 @@ const SignUp = () => {
     
   return (
       <div  >
-              <div className='container'>
+      <div className='container'>
+        <ToastContainer />
           <form onSubmit={handlesubmit}> 
                   
   <div className="mb-3">

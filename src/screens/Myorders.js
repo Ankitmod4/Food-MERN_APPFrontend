@@ -4,6 +4,9 @@ import { RemoveCart, ClearCart } from "../Redux/Slices/Slice";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { BackendURl } from "../Helper/Helper";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const MyOrders = () => {
   const cart = useSelector((state) => state.cart.cart);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
@@ -46,16 +49,17 @@ const MyOrders = () => {
 
       dispatch(ClearCart());
       console.log("Order successfully posted:", res.data);
-      alert("Congratulations Your Order is Placed");
+      toast.success("Congratulations Your Order is Placed");
     } catch (error) {
       console.error("Error while posting order:", error);
-      alert("Failed to place order. Please try again later.");
+      toast.error("Failed to place order. Please try again later.");
     }
   };
 
   return (
     <div>
       <h1>My Orders</h1>
+      <ToastContainer />
       {cart && cart.length > 0 ? (
         <div className="container">
           <ul
