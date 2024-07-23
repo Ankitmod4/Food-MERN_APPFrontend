@@ -38,7 +38,10 @@ const PreviousOrders = () => {
     <div className="container mt-4">
       <h1 className="text-center mb-4">Previous Orders</h1>
       {data.length === 0 ? (
+        <>
         <p className="text-center">No previous orders found.</p>
+         <button className='btn btn-primary'> <Link to='/myorders'>ORDER NOW</Link></button>
+          </>
       ) : (
         data.map((order, orderIndex) => {
           const flattenedOrderData = flattenOrderData(order.order_data);
