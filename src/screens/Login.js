@@ -12,15 +12,15 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
-  async function handleClick(e) {
+  const [loading,setloading]=useState(false);
+    async function handleClick(e) {
     e.preventDefault();
     setError('');
-
+   setloading(true);
     try {
       const res = await axios.post(`${BackendURl}/api/v1/logindata`, {
         email,
-        password,
+        password, 
       });
 
       setEmail('');
@@ -42,6 +42,9 @@ const Login = () => {
       console.error('Error submitting form:', err);
       setError('Email and Password are incorrect');
       toast.error('ERROR IN LOGGING IN');
+    }
+    finally{
+      setloading(false);
     }
   }
 
@@ -78,7 +81,9 @@ const Login = () => {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary">Login</button>
+        <button type="submit" className="btn btn-primary" disabled={loading}>
+  {loading ? <span className="spinner-border spinner-border-sm"></span> : "Login"}
+</button>
         <Link to="/createuser" className="btn btn-secondary">Not a User? Sign Up</Link>
       </form>
     </div>

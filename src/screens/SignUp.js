@@ -12,8 +12,10 @@ const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     try {
       const res = await axios.post(`${BackendURl}/api/v1/signupdata`, {
@@ -36,6 +38,8 @@ const SignUp = () => {
       }
     } catch (err) {
       toast.error('Error submitting form');
+    } finally{
+      setLoading(false);
     }
   };
 
@@ -85,9 +89,10 @@ const SignUp = () => {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">
-            Sign Up
-          </button>
+          <button type="submit" className="btn btn-primary" disabled={loading}>
+  {loading ? <span className="spinner-border spinner-border-sm"></span> : "Sign Up"}
+</button>
+
 
           <Link to="/login" className="btn btn-secondary">
             Already a User? Login
