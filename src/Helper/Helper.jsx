@@ -1,0 +1,1 @@
+export const BackendURl = "https://food-app-backend-peach.vercel.app";
